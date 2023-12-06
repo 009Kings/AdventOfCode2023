@@ -102,5 +102,3 @@ for i in range(len(calibration_values)):
   sum_of_calibration_values += calibration_values[i]
 
 print(sum_of_calibration_values)
-
-# 52653
