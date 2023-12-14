@@ -45,7 +45,6 @@ def find_gears(graph):
   line_len = len(re.match(r'.+\B', graph).group()) + 1
   potential_gears = re.finditer(r'[^\w|.|\n]', graph)
 
-  gear_parts_list = []
   gear_ratio_list = []
 
   for potential_gear in potential_gears:
