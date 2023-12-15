@@ -67,17 +67,17 @@ class Map:
 current_map = []
 maps = {}
 
-with open('day-5-input.txt', 'r') as stupid:
-  for line in stupid:
-    if len(line) < 2:
-      continue
-    if 'seeds' in line:
-      seed_list = [int(seed) for seed in find_digits.findall(line)]
-    elif 'map' in line:
-      current_map = re.split('-', line[:-5])
-      maps[line[:-5]] = []
-    else:
-      maps[f'{current_map[0]}-{current_map[1]}-{current_map[2]}'].append(Map(current_map[0], current_map[2], *[int(num) for num in find_digits.findall(line)]))
+# with open('day-5-input.txt', 'r') as stupid:
+#   for line in stupid:
+#     if len(line) < 2:
+#       continue
+#     if 'seeds' in line:
+#       seed_list = [int(seed) for seed in find_digits.findall(line)]
+#     elif 'map' in line:
+#       current_map = re.split('-', line[:-5])
+#       maps[line[:-5]] = []
+#     else:
+#       maps[f'{current_map[0]}-{current_map[1]}-{current_map[2]}'].append(Map(current_map[0], current_map[2], *[int(num) for num in find_digits.findall(line)]))
 
 # for line in iter(sample_text.splitlines()):
 #   if len(line) < 2:
@@ -90,7 +90,41 @@ with open('day-5-input.txt', 'r') as stupid:
 #   else:
 #     maps[f'{current_map[0]}-{current_map[1]}-{current_map[2]}'].append(Map(current_map[0], current_map[2], *[int(num) for num in find_digits.findall(line)]))
 
+# current_conversions = [0 for seed in seed_list]
+
+# for i, seed in enumerate(seed_list):
+#   for key, conversion_type in maps.items():
+#     for conversion in conversion_type:
+#       if key[:4] == 'seed':
+#         result = conversion.to_destination(seed)
+#         if result != None:
+#           current_conversions[i] = result
+#           break
+#         else:
+#           current_conversions[i] = seed
+#       else:
+#         result = conversion.to_destination(current_conversions[i])
+#         if result != None:
+#           current_conversions[i] = result
+#           break
+
+# print(min(current_conversions))
+
+#  ================= Pt. 2
+for line in iter(sample_text.splitlines()):
+  if len(line) < 2:
+    continue
+  if 'seeds' in line:
+    seed_list = [int(seed) for seed in find_digits.findall(line)]
+  elif 'map' in line:
+    current_map = re.split('-', line[:-5])
+    maps[line[:-5]] = []
+  else:
+    maps[f'{current_map[0]}-{current_map[1]}-{current_map[2]}'].append(Map(current_map[0], current_map[2], *[int(num) for num in find_digits.findall(line)]))
+
+
 # check seeds
+
 current_conversions = [0 for seed in seed_list]
 
 for i, seed in enumerate(seed_list):
@@ -109,4 +143,4 @@ for i, seed in enumerate(seed_list):
           current_conversions[i] = result
           break
 
-print(min(current_conversions))
+# print(min(current_conversions))
